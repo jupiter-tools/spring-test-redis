@@ -22,8 +22,8 @@ class RedisTestContainerCustomHostPortTest {
     @BeforeEach
     void setUp() {
         redisClient =
-                RedissonClientFactory.getClient(System.getProperty("my.host"),
-                                                System.getProperty("my.port"));
+                RedissonClientFactory.getClient(System.getProperty("my.second.host"),
+                                                System.getProperty("my.second.port"));
     }
 
     @Test
