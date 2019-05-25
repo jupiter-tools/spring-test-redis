@@ -1,6 +1,6 @@
 package com.jupitertools.springtestredis.customizer;
 
-import com.jupitertools.springtestredis.EnableRedisTestContainers;
+import com.jupitertools.springtestredis.RedisTestContainer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextCustomizer;
 import org.springframework.test.context.MergedContextConfiguration;
@@ -13,7 +13,7 @@ import java.util.Set;
  * Created on 2019-05-23
  * <p>
  * The ContextCustomizer to make a different between context configurations
- * of tests where used different container ports in {@link EnableRedisTestContainers} annotation.
+ * of tests where used different container ports in {@link RedisTestContainer} annotation.
  * In order to reload the spring context cache if it's necessary.
  *
  * @author Korovin Anatoliy

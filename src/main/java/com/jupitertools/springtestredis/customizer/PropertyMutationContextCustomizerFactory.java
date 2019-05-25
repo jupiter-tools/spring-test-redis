@@ -1,7 +1,7 @@
 package com.jupitertools.springtestredis.customizer;
 
-import com.jupitertools.springtestredis.EnableRedisTestContainers;
-import com.jupitertools.springtestredis.EnableRedisTestContainersMultiple;
+import com.jupitertools.springtestredis.RedisTestContainer;
+import com.jupitertools.springtestredis.RedisTestContainers;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.test.context.ContextConfigurationAttributes;
 import org.springframework.test.context.ContextCustomizer;
@@ -22,14 +22,14 @@ public class PropertyMutationContextCustomizerFactory implements ContextCustomiz
     public ContextCustomizer createContextCustomizer(Class<?> testClass,
                                                      List<ContextConfigurationAttributes> configAttributes) {
 
-        Set<EnableRedisTestContainers> annotations =
+        Set<RedisTestContainer> annotations =
                 AnnotationUtils.getRepeatableAnnotations(testClass,
-                                                         EnableRedisTestContainers.class,
-                                                         EnableRedisTestContainersMultiple.class);
+                                                         RedisTestContainer.class,
+                                                         RedisTestContainers.class);
 
         Set<RedisContainerDescription> descriptions = annotations.stream()
-                                                                 .map(a -> new RedisContainerDescription(a.hostPropertyName(),
-                                                                                                         a.portPropertyName()))
+                                                                 .map(a -> new RedisContainerDescription(a.hostTargetProperty(),
+                                                                                                         a.portTargetProperty()))
                                                                  .collect(Collectors.toSet());
 
         return new PropertyMutationContextCustomizer(descriptions);

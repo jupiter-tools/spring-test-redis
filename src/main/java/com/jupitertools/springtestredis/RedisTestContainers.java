@@ -8,14 +8,14 @@ import java.lang.annotation.Target;
 /**
  * Created on 2019-05-24
  * <p>
- * This annotation provide an ability to use @{@link EnableRedisTestContainers}
+ * This annotation provide an ability to use @{@link RedisTestContainer}
  * annotation as repeatable annotation.
  *
  * @author Korovin Anatoliy
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface EnableRedisTestContainersMultiple {
+public @interface RedisTestContainers {
 
-    EnableRedisTestContainers[] value();
+    RedisTestContainer[] value();
 }

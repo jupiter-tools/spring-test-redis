@@ -1,8 +1,5 @@
 package com.jupitertools.springtestredis;
 
-import org.junit.jupiter.api.Tag;
-import org.springframework.test.context.ActiveProfiles;
-
 import java.lang.annotation.*;
 
 /**
@@ -14,18 +11,16 @@ import java.lang.annotation.*;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@Tag("antkorwin-redis-testcontainers")
-@ActiveProfiles("antkorwin-redis-testcontainers")
-@Repeatable(EnableRedisTestContainersMultiple.class)
-public @interface EnableRedisTestContainers {
+@Repeatable(RedisTestContainers.class)
+public @interface RedisTestContainer {
 
     /**
      * @return In this property will be set the value of Redis Host after start a container
      */
-    String hostPropertyName() default "spring.redis.host";
+    String hostTargetProperty() default "spring.redis.host";
 
     /**
      * @return In this property will be set the value of Redis Port after start a container
      */
-    String portPropertyName() default "spring.redis.port";
+    String portTargetProperty() default "spring.redis.port";
 }

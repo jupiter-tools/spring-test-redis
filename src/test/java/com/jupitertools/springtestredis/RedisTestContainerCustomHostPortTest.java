@@ -7,14 +7,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 /**
  * Created on 2019-05-23
  *
  * @author Korovin Anatoliy
  */
 @SpringBootTest
-@RedisTestContainer(hostTargetProperty = "my.host", portTargetProperty = "my.port")
-class CustomizationHostAndPortTest {
+@RedisTestContainer(hostTargetProperty = "my.second.host", portTargetProperty = "my.second.port")
+class RedisTestContainerCustomHostPortTest {
 
     private RedissonClient redisClient;
 
@@ -26,12 +27,12 @@ class CustomizationHostAndPortTest {
     }
 
     @Test
-    void testPropertiesAfterStartContext() {
-        System.out.println("host : " + System.getProperty("my.host") + " " +
-                           "port : " + System.getProperty("my.port"));
+    void getProps() {
+        System.out.println("host : " + System.getProperty("my.second.host") + " " +
+                           "port : " + System.getProperty("my.second.port"));
 
-        assertThat(System.getProperty("my.port")).isNotEmpty();
-        assertThat(System.getProperty("my.host")).isNotEmpty();
+        assertThat(System.getProperty("my.second.port")).isNotEmpty();
+        assertThat(System.getProperty("my.second.host")).isNotEmpty();
     }
 
     @Test
