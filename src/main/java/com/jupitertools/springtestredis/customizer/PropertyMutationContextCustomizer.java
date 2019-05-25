@@ -1,6 +1,8 @@
 package com.jupitertools.springtestredis.customizer;
 
 import com.jupitertools.springtestredis.RedisTestContainer;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextCustomizer;
 import org.springframework.test.context.MergedContextConfiguration;
@@ -24,6 +26,8 @@ public class PropertyMutationContextCustomizer implements ContextCustomizer {
 
     private static final Integer REDIS_PORT = 6379;
 
+    private static final Log logger = LogFactory.getLog("RedisTestContainer");
+
     public PropertyMutationContextCustomizer(Set<RedisContainerDescription> descriptions) {
         this.descriptions = descriptions;
     }
@@ -33,8 +37,7 @@ public class PropertyMutationContextCustomizer implements ContextCustomizer {
                                  MergedContextConfiguration mergedConfig) {
 
         for (RedisContainerDescription description : descriptions) {
-
-            System.out.println("Start REDIS TestContainer");
+            logger.info("Start REDIS TestContainer");
             GenericContainer redis = new GenericContainer("redis:latest").withExposedPorts(REDIS_PORT);
             redis.start();
 
@@ -48,8 +51,12 @@ public class PropertyMutationContextCustomizer implements ContextCustomizer {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) { return true; }
-        if (o == null || getClass() != o.getClass()) { return false; }
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         PropertyMutationContextCustomizer that = (PropertyMutationContextCustomizer) o;
         return Objects.equals(descriptions, that.descriptions);
     }
