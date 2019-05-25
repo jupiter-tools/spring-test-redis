@@ -5,7 +5,7 @@
 
 ## Overview
 
-image:./images/redis.png[redis container scheme]
+image:./images/redis.png[redis container scheme,300]
 
 ## How to write integration tests on Spring Framework with Redis
 
