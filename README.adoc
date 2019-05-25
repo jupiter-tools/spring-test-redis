@@ -24,7 +24,6 @@ And now, you can start Redis in docker (TestContainers) by the using of `@RedisT
 
 [source, java]
 ----
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @RedisTestContainer
 class RedisTestContainerTest {
@@ -43,6 +42,8 @@ class RedisTestContainerTest {
     }
 }
 ----
+
+You can use this annotation to start Redis container in tests both with JUnit5 and JUnit4. The implementation doesn't depend on some test framework, just on the Spring Framework.
 
 ## How to use multiple Redis containers in the one test case:
 
