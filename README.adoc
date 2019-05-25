@@ -2,6 +2,10 @@
 
 # Spring Test Redis
 
+image:https://travis-ci.com/jupiter-tools/spring-test-redis.svg?branch=master["Build Status", link="https://travis-ci.com/jupiter-tools/spring-test-redis"]
+
+
+Tools to write integration tests of Spring Framework with Redis.
 
 ## Overview
 
