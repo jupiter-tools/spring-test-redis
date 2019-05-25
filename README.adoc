@@ -63,7 +63,7 @@ class MultipleContainerInOneTest {
 }
 ----
 <1> start a Redis test container and set a host/port value of started container to default Spring Boot properties (`spring.redis.host` and `spring.redis.port`)
-<2> start another Redis container and set a host/port value to specified properties
+<2> start another Redis container and set a host/port value to specified properties, exactly in these properties you can read an actual value of host/port after run application context.
 
 After test execution you can see something like this in the output:
 
