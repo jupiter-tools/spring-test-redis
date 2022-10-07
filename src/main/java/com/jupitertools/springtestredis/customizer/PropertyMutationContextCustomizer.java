@@ -38,11 +38,12 @@ public class PropertyMutationContextCustomizer implements ContextCustomizer {
 
         for (RedisContainerDescription description : descriptions) {
             logger.info("Start REDIS TestContainer");
-            GenericContainer redis = new GenericContainer("redis:latest").withExposedPorts(REDIS_PORT);
+            GenericContainer redis = new GenericContainer("redis:7.0.5-alpine").withExposedPorts(REDIS_PORT);
+            redis.withReuse(true);
             redis.start();
 
             System.setProperty(description.getHostPropertyName(),
-                               redis.getContainerIpAddress());
+                               redis.getHost());
 
             System.setProperty(description.getPortPropertyName(),
                                redis.getMappedPort(REDIS_PORT).toString());
